@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        DOCKER_IMAGE = "arnavsoni2007:simple-maven-app:latest"
+        DOCKER_IMAGE = "arnavsoni2007/simple-maven-app"
     }
 
     tools {
@@ -24,7 +24,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                powershell 'docker build -t "${env:IMAGE}:${env:BUILD_NUMBER}" -t "${env:IMAGE}:latest" .'
+                powershell 'docker build -t "${env:DOCKER_IMAGE}:${env:BUILD_NUMBER}" -t "${env:DOCKER_IMAGE}:latest" .'
             }
         }
 
@@ -37,8 +37,8 @@ pipeline {
                 )]) {
                     powershell '''
                         $env:DOCKERHUB_TOKEN | docker login --username $env:DOCKERHUB_USER --password-stdin
-                        docker push "${env:IMAGE}:${env:BUILD_NUMBER}"
-                        docker push "${env:IMAGE}:latest"
+                        docker push "${env:DOCKER_IMAGE}:${env:BUILD_NUMBER}"
+                        docker push "${env:DOCKER_IMAGE}:latest"
                     '''
                 }
             }

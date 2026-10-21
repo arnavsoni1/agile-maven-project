@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: simple-maven-app
-          image: YOUR_DOCKERHUB_USERNAME/simple-maven-app:latest
+          image: arnavsoni2007/simple-maven-app:latest
           imagePullPolicy: Always
           stdin: true
           tty: true
