@@ -1,11 +1,12 @@
 # Maven build output
-target/
+target/*
 
 # Compiled Java artifacts
 *.class
 *.jar
 *.war
 *.ear
+!target/simple-maven-app-1.0-SNAPSHOT.jar
 
 # Maven release and generated metadata
 release.properties
