@@ -47,7 +47,7 @@ pipeline {
         stage('Deploy to Kubernetes') {
             steps {
                 powershell '''
-                    kubectl apply -f deployment.yaml
+                    kubectl apply -f configmap.yaml -f deployment.yaml
                 '''
             }
         }
